@@ -53,7 +53,7 @@ public class ReadFile {
 		str = str.replaceAll("[^a-zA-Z0-9]", " ");									/* Stripped String of all non-alphabetical character using replace all.*/
 		str =str.toLowerCase();												/* Made entire String lowercase to prevent Upper case words from being treated as different from lower case.*/
         
-        int count = 0;
+        	int count = 0;
 		String [] words = str.split("\\s+");						        			/* Declared String array to hold the string from the arraylist*/
 		HashMap<String, Integer> mappy = new HashMap<String, Integer>();						/* I used a Hashmap to store and sort my words here over other methods due to its fast O(1) runtimes for many operation.*/
 																
