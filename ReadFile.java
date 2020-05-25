@@ -16,6 +16,11 @@ import org.jsoup.select.*;
  * Date: 5/22/2020
  * Text Analyzer
  * 
+ * To run this file you will need to have the jsoup filed downloaded to use the extended library.
+ * I have the file in the repository to enable to run on an IED like esclipe or netbeans but I also
+ * included a excutable jar file that has the needed libraries within it so nothing else is requires on the
+ * user end.
+ *
  * For This project I use the help of Jsoup a java library that works with real world HTML
  * and provides API for fecting URLs. This includes things suchs as parseing HTML files, extracting
  * data and so on. I found using this to be the easiest way to handle the removal of the html tags and 
