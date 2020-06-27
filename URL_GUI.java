@@ -1,6 +1,8 @@
 package gui;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -18,6 +20,10 @@ import java.util.logging.*;
 import org.jsoup.*;
 import org.jsoup.nodes.*;
 import org.jsoup.select.*;
+import org.junit.platform.commons.util.StringUtils;
+
+
+
 
 /*
  * Author: Jeffrey Callender
@@ -38,6 +44,10 @@ import org.jsoup.select.*;
  * Added a simple GUI that simply takes the URL link that will return the top occurring words within a website's p tags.
  * In the future more features will be added to the program such as outputting the result to the GUI instead of the console and
  * finding the occurrences of a specific word specified by the user input into the textfield.
+ *
+ * Updated For 6/21/2020
+ * A Junit test was added to the file and a simple test case was made to test the functionality of word occurrences
+ *
  */
 
 
@@ -48,7 +58,7 @@ public class URL_GUI implements  ActionListener {
 	private JButton button;
 	private JLabel label;
 	private TextField inputUrl = new TextField();
-	
+	HashMap<String, Integer> mappy = new HashMap<String, Integer>();		// added HashMap up here in order for it to be accessible everywhere	
 	public URL_GUI() {
 		
 		panel = new JPanel();
@@ -85,9 +95,19 @@ public class URL_GUI implements  ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {	
-		String real = inputUrl.getText();
 		
 		try {
+			returningMap();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		
+		
+	}
+	
+	public HashMap returningMap() throws Exception {
+		try {
+			String real = "http://127.0.0.1:5500/index.html";					// hardcoded the url input to avoid inputing it over and over again and make my life easier.
 			Document doc = Jsoup.connect(real).get();
 			Elements paragraphs = doc.select("p");
 			
@@ -97,13 +117,15 @@ public class URL_GUI implements  ActionListener {
 					arraylist.add(p.text());
 				}	
 			
-			String str = arraylist.toString();										/* Declare String variable str to hold string from arraylist. Used toString to convert the arraylist to a string.*/					
-			str = str.replaceAll("[^a-zA-Z0-9]", " ");									/* Stripped String of all non-alphabetical character using replace all.*/
+			String str = arraylist.toString();										/* Declare String variable str to hold string from arraylist. Used toString to convert the arraylist to a string.*/																							/* Stripped String of all non-alphabetical character using replace all.*/
+		
 			str =str.toLowerCase();
-			
+			str = str.replaceAll("[^a-zA-Z0-9]", " ");
+			str = str.trim();														// remove leading and trailing white spaces
+			String [] words = str.split("\\W+");
+	
 			int count = 0;
-			String [] words = str.split("\\s+");						        			/* Declared String array to hold the string from the arraylist*/
-			HashMap<String, Integer> mappy = new HashMap<String, Integer>();
+																								/* Declared String array to hold the string from the arraylist*/
 			for(String Raven: words) 											/* Enhance for loop looping through all the words in our words array that contain our string.*/
 				{
 					if(mappy.containsKey(Raven)) 										/* If statement checking our hashmap if it find a word that as occure already in the map.*/
@@ -127,17 +149,18 @@ public class URL_GUI implements  ActionListener {
 			 																								
 				.forEachOrdered(x -> descendingMap.put(x.getKey(),x.getValue()));
 			
-			System.out.println("Frequency of Words: " +descendingMap);							/* At last we print out the content within our descending LinkedHashMap. */
+			System.out.println("Frequency of words: "+descendingMap);							/* At last we print out the content within our descending LinkedHashMap. */
 			
-			
+		
 			
 		} catch (IOException e1) {
 			Logger.getLogger(URL_GUI.class.getName()).log(Level.SEVERE,null, e1);
 			e1.printStackTrace();
 		}
 		
+		return mappy;
 	}
-	
-	
 }
+
+//http://127.0.0.1:5500/index.html
 
