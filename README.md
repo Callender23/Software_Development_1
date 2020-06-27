@@ -10,3 +10,6 @@
     A new simple GUI was added to new java file called URL_GUI.java, it function the same as the
     word occurences program but just has an added GUI that takes in a URL link and returns the most
     occurening words from descending order.
+## Junit Testing added
+    A Junit test was added to the file and a simple test case was made to test the functionality of word occurrences
+    a HashMap method called returiningMap that returns a HashMap was added to aid in the Junit Test
