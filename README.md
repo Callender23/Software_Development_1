@@ -20,4 +20,7 @@ means that having a single thread exection in much more efficiency. This is show
 
 ![concurreny analysis of execution](https://user-images.githubusercontent.com/51206691/86875801-566dc400-c0b1-11ea-830c-43cfe6ab40d5.PNG)
 
-When values were around 200 millions we started to see the efficiency and power of multithreading as our execution time for multithreading was half of that for single thread run of the program. This was expected as now the extra threads are much more of a use to use now that we have a large sample size to caculated.
+
+When values were around 200 millions we started to see the efficiency and power of multithreading as our execution time for multithreading was half of that for single thread run of the program. This was expected as now the extra threads are much more of a use to use now that we have a large sample size to caculated. This can be seen with the screenshot below.
+
+![Concurrency image](https://user-images.githubusercontent.com/51206691/86876335-7e115c00-c0b2-11ea-86b4-6f7dcdbf2f8e.PNG)
