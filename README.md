@@ -14,4 +14,4 @@ in parallel. The law predicts that for every given parallel portion (roughly 75%
 
 3. Physical Hardware: One of the most important thing that effects our performace would be the CPU that we have. If we have a CPU which has more than one processor avaliable then you have avaliable. In ideal conditions having something like 4 cores can allow might allow for faster caculations such as primes numbers to be 4 times faster using 4 threads.
 
-![alt text](https://github.com/[callender23]/[Software_Development_1]/blob/[Concurrency]/concurreny analysis of execution.jpg?raw=true)
+
