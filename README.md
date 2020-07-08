@@ -15,8 +15,8 @@ in parallel. The law predicts that for every given parallel portion (roughly 75%
 3. Physical Hardware: One of the most important thing that effects our performace would be the CPU that we have. If we have a CPU which has more than one processor avaliable then you have avaliable. In ideal conditions having something like 4 cores can allow might allow for faster caculations such as primes numbers to be 4 times faster using 4 threads.
 
 ## Analysis of program
-when presented with values under 2 millions multithreading became inefficent to use as the cost to make the threads in terms of execution time and the realtively "small" value
-means that having a single thread exection in much more efficiency. This is shown in the following screenshot below
+When presented with values under 2 millions multithreading became inefficent to use as the cost to make the threads in terms of execution time and the realtively "small" values
+means that having a single thread exection in this case is much more efficiency. This is shown in the following screenshot below.
 
 ![concurreny analysis of execution](https://user-images.githubusercontent.com/51206691/86875801-566dc400-c0b1-11ea-830c-43cfe6ab40d5.PNG)
 
