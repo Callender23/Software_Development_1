@@ -4,7 +4,7 @@ Program caculates sum of an 200 million array populated with random values [1 - 
 and returns the time in millseconds for using single thread and multithreading.
 
 ## Analysis of program
-Multithreading is one thing that can definilty improve perfroamce when it comes to application in java. This However, can aslo be inefficnt if not use correctly. Multuple factors should be consider when using multithreading.
+Multithreading is one thing that can improve performace when it comes to progamming in java. This However, can aslo be inefficient if not use correctly. Multuple factors should be consider when using multithreading.
 
 1. Size of elements: We want to make sure we have big sufficenlty large values to utlize multhreading. What is sufficiently large? When it comes to empirical runtime analysis the answer is, "it depends." For a function that is looking at string lengths, we might intuit that string lengths of 1, 10, and 20 aren't long enough to tell us anything meaningful about runtime. But a string of length 1,000,000,000 will be unreasonable to deal with if we're passing it to an O(2^n) function.
 
