@@ -13,3 +13,5 @@ law that state that in any program there is always a percetang the can not be ru
 in parallel. The law predicts that for every given parallel portion (roughly 75%) of a progam you can speed up exectuion only so sar(4 times) even if you use more and more processor to do the work.Essentially you end up having bottlenecking since you have threads waiting for others to be done and the program might not even required them at all which is just more work being done causing increase in our execution time.
 
 3. Physical Hardware: One of the most important thing that effects our performace would be the CPU that we have. If we have a CPU which has more than one processor avaliable then you have avaliable. In ideal conditions having something like 4 cores can allow might allow for faster caculations such as primes numbers to be 4 times faster using 4 threads.
+
+![alt text](https://github.com/[callender23]/[Software_Development_1]/blob/[Concurrency]/concurreny analysis of execution.jpg?raw=true)
