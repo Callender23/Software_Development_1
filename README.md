@@ -10,3 +10,8 @@
     A new simple GUI was added to new java file called URL_GUI.java, it function the same as the
     word occurences program but just has an added GUI that takes in a URL link and returns the most
     occurening words from descending order.
+    
+## JDBC support added
+    JDBC support was added to the word occurence application. word occurence now reads and stores frequency of words in a local database in MySQL.
+    Program has the addition of two added methods which are getConnection which allows connection of MySQL database and getData which display
+    a query command of the top 20 most reoccuring words from a given URL input.
