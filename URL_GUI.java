@@ -1,10 +1,7 @@
 package gui;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,6 +11,10 @@ import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.logging.*;
 import org.jsoup.*;
 import org.jsoup.nodes.*;
@@ -38,6 +39,12 @@ import org.jsoup.select.*;
  * Added a simple GUI that simply takes the URL link that will return the top occurring words within a website's p tags.
  * In the future more features will be added to the program such as outputting the result to the GUI instead of the console and
  * finding the occurrences of a specific word specified by the user input into the textfield.
+ * 
+ * Updated For 7/13/2020
+ * Added a database to the word occurrence application. Instead of the words frequency being store and read to our HashMap it will be done using MySQL database.
+ * The HashMap will only be use as a temporary place to store the words until it is passed to the database using query commands.
+ * With the added database this application will be using JDBC to support query commands for inserting and reading of our created table called word.
+ * A table word was created in MySQL but could have been done in here as well in case we are inserting into a table that does not exist. 
  */
 
 
@@ -80,6 +87,7 @@ public class URL_GUI implements  ActionListener {
 	}
 
 	public static void main (String[] args) throws Exception{
+		
 		new URL_GUI();
 	}
 
@@ -102,14 +110,23 @@ public class URL_GUI implements  ActionListener {
 			str =str.toLowerCase();
 			
 			int count = 0;
-			String [] words = str.split("\\s+");						        			/* Declared String array to hold the string from the arraylist*/
+			Connection con = getConnection();
+			PreparedStatement wordKeeper;
+			String [] words = str.split("\\s+");	
+																					/* Declared String array to hold the string from the arraylist*/
 			HashMap<String, Integer> mappy = new HashMap<String, Integer>();
 			for(String Raven: words) 											/* Enhance for loop looping through all the words in our words array that contain our string.*/
 				{
 					if(mappy.containsKey(Raven)) 										/* If statement checking our hashmap if it find a word that as occure already in the map.*/
 					{
-						count = mappy.get(Raven);									/* If map does find more then one occurrence of word we place word in map and update the count.*/
-						mappy.put(Raven, count + 1);	
+						count = mappy.get(Raven);
+																							/* If map does find more then one occurrence of word we place word in map and update the count.*/
+						mappy.put(Raven, count + 1);
+						// we have preparedStatment object wordkeeper that we set equal to our insert statement that insert the values from words array and count to our database column ourwords and wordCount
+						wordKeeper = con.prepareStatement("INSERT INTO words (ourwords,wordCount) VALUES('"+Raven+"','"+count+"') ON DUPLICATE KEY UPDATE wordCount = VALUES (wordCount) + 1");
+						// statements are executed with executeUpdate()
+						wordKeeper.executeUpdate();	
+						
 					}
 					else 
 					{
@@ -118,22 +135,59 @@ public class URL_GUI implements  ActionListener {
 					
 				}
 			
-			LinkedHashMap<String, Integer> descendingMap = new LinkedHashMap<>();					 	/* Declared a LinedHashMap in ordered to help sort the values in our HashMap(mappy) in descending order.
-																	   LinkedHashMap preserve the order in which elements are inserted which is important for this to work.*/
-			mappy.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))  			/* Here Im doing the sorting of the HashMap in a descending order. By using the comparingByvalues(method) and calling the reverseOrder method(). After that
-			 														   I use the forEachOrdered which performs an action, in this case the action is putting the values of both keys and values to the LinkedHashMap we created in								
-			 														   a descending order*/ 								
-			 																							
-			 																								
-				.forEachOrdered(x -> descendingMap.put(x.getKey(),x.getValue()));
-			
-			System.out.println("Frequency of Words: " +descendingMap);							/* At last we print out the content within our descending LinkedHashMap. */
+				// we call helper method getData() to display the top 20 frequently occurring words.
+				getData();
 			
 			
 			
 		} catch (IOException e1) {
 			Logger.getLogger(URL_GUI.class.getName()).log(Level.SEVERE,null, e1);
 			e1.printStackTrace();
+		} catch (Exception e1) {
+			
+			e1.printStackTrace();
+		}
+		
+	}
+	
+	/*Class getConnection throws an exception and connects to MySQL*/
+	public static Connection getConnection() throws Exception{
+		
+		try {
+			 String driver = "com.mysql.cj.jdbc.Driver";
+			 String url = "jdbc:mysql://localhost:3306/word_occurences";
+			 String username = "root";
+			 String password = "TheBest@23";
+			 Class.forName(driver);
+			 
+			 Connection com = DriverManager.getConnection(url, username, password);
+			 return com;
+		}catch (Exception e) {      
+			System.out.println(e);
+		}
+		
+		return null;
+		
+	}
+	/*getData() is a helper method that helps us output the result of our query. In this particular case we are connecting to the database
+	  and selecting the first 20 words that occurs the most.*/
+	public static void getData() {
+		
+		
+		String query ="SELECT * FROM words ORDER BY wordCount DESC LIMIT 20";
+		try {
+			Connection con = getConnection();
+			PreparedStatement output = con.prepareStatement(query);
+			
+			ResultSet rs = output.executeQuery();
+			System.out.println("The Top 20 most reoccuring words");
+			while(rs.next()) {
+		
+				System.out.println("Frequency: "+(rs.getInt(2))+ " \tWord: "+ (rs.getString(1)));
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 	}
