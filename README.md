@@ -16,6 +16,6 @@
     Program has the addition of two added methods which are getConnection which allows connection of MySQL database and getData which display
     a query command of the top 20 most reoccuring words from a given URL input.
     
-## Java doc added
+## Java Doc added
     Java documentation was added to word occurences project changes can be seen in URL_GUI.java file.
     Output for Java doc HTML index can be found in the java doc image 01 & 02 PNG files.
