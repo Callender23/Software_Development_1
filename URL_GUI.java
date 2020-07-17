@@ -45,8 +45,10 @@ import org.jsoup.select.*;
  * The HashMap will only be use as a temporary place to store the words until it is passed to the database using query commands.
  * With the added database this application will be using JDBC to support query commands for inserting and reading of our created table called word.
  * A table word was created in MySQL but could have been done in here as well in case we are inserting into a table that does not exist. 
+ *
+ * Update For 7/16/2020
+ * Java doc was added to word occurrences application.
  */
-
 
 public class URL_GUI implements  ActionListener {
 	
@@ -56,6 +58,9 @@ public class URL_GUI implements  ActionListener {
 	private JLabel label;
 	private TextField inputUrl = new TextField();
 	
+	/**
+	 * constructor that makes a new GUI
+	 */
 	public URL_GUI() {
 		
 		panel = new JPanel();
@@ -86,11 +91,22 @@ public class URL_GUI implements  ActionListener {
 		
 	}
 
+	/**
+	 * main method
+	 * @param args
+	 * @throws Exception
+	 */
 	public static void main (String[] args) throws Exception{
 		
 		new URL_GUI();
 	}
 
+	/**
+	 * Method takes in an ActionEvent e performs an action.
+	 * Method establishes a connection to a URL using Jsoup extended library.
+	 * Method then parses p tags from HTML and puts most recurring words in local MySQL database along with their frequency count
+	 * @param ActionEvent e
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {	
 		String real = inputUrl.getText();
@@ -151,6 +167,11 @@ public class URL_GUI implements  ActionListener {
 	}
 	
 	/*Class getConnection throws an exception and connects to MySQL*/
+	/**
+	 * method establishes connection to a local instant of MySQL database
+	 * @return connection object
+	 * @throws Exception
+	 */
 	public static Connection getConnection() throws Exception{
 		
 		try {
@@ -171,6 +192,10 @@ public class URL_GUI implements  ActionListener {
 	}
 	/*getData() is a helper method that helps us output the result of our query. In this particular case we are connecting to the database
 	  and selecting the first 20 words that occurs the most.*/
+	/**
+	 * methods displays a query of top 20 recurring words in local MySQL database
+	 *
+	 */
 	public static void getData() {
 		
 		
@@ -183,7 +208,7 @@ public class URL_GUI implements  ActionListener {
 			System.out.println("The Top 20 most reoccuring words");
 			while(rs.next()) {
 		
-				System.out.println("Frequency: "+(rs.getInt(2))+ " \tWord: "+ (rs.getString(1)));
+				System.out.println("Frequency: "+(rs.getInt(2)) + " \tWord: "+ (rs.getString(1)));
 				
 			}
 		} catch (Exception e) {
