@@ -15,3 +15,6 @@
     JDBC support was added to the word occurence application. Word occurence now reads and stores frequency of words in a local database in MySQL.
     Program has the addition of two added methods which are getConnection which allows connection of MySQL database and getData which display
     a query command of the top 20 most reoccuring words from a given URL input.
+    
+## Java doc added
+    Java documentation was added to word occurences project changes can be seen in URL_GUI.java file.
