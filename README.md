@@ -7,7 +7,7 @@
   4. Type in name of URL you wish to get the frequency of words for the website's p tag.
   
 ## Simple GUI added 
-    A new simple GUI was added to new java file called URL_GUI.java, it function the same as the
+    A new simple GUI was added to new java file called WordOccurenceApp.java, it function the same as the
     word occurences program but just has an added GUI that takes in a URL link and returns the most
     occurening words from descending order.
     
@@ -17,7 +17,7 @@
     a query command of the top 20 most reoccuring words from a given URL input.
     
 ## Java Doc added
-    Java documentation was added to word occurences project changes can be seen in URL_GUI.java file.
+    Java documentation was added to word occurences project changes can be seen in WordOccurenceApp.java file.
     Output for Java doc HTML index can be found in the java doc image 01 & 02 PNG files.
     
 ## Junit Testing added
