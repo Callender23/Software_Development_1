@@ -21,5 +21,5 @@
     Output for Java doc HTML index can be found in the java doc image 01 & 02 PNG files.
     
 ## Junit Testing added
-    A Junit test was added to the file and a simple test case was made to test the functionality of word occurrences
+    A Junit test was added to the file(URL_test.java) and a simple test case was made to test the functionality of word occurrences
     a HashMap method called returiningMap that returns a HashMap was added to aid in the Junit Test
