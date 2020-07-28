@@ -3,8 +3,7 @@
 ## Running jar file on Windows & Mac
   1. Open Command Prompt (Windows) or Terminal (Mac)
   2. navagiate to location of jar file.
-  3. Type in **java -jar Text_Analyzer.jar** to run jar file.
-  4. Type in name of URL you wish to get the frequency of words for the website's p tag.
+  3. Type in **java -jar<name_of_jar_file>.jar** to run jar file.
   
 ## Simple GUI added 
     A new simple GUI was added to new java file called WordOccurenceApp.java, it function the same as the
