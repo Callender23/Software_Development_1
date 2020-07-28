@@ -13,7 +13,7 @@
  ## Running ClientSide/SeverSide jar files
     To know how to run the two jar files simply follow the steps in Running jar file on Windows & Mac section.
     Be sure to run the ServerSide jar file before attempting to run the ClientSide jar file.
-    ClientSide.jar and ServerSide.jar were both added to the this branch(master) along with their respective java files.
+    ClientSide.jar and ServerSide.jar were both added to the this branch(master) along with their respective java files and screenshots.
 
 ## Simple GUI added 
     A new simple GUI was added to new java file called WordOccurenceApp.java, it function the same as the
