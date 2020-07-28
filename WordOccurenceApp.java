@@ -40,6 +40,10 @@ import org.jsoup.select.*;
  * In the future more features will be added to the program such as outputting the result to the GUI instead of the console and
  * finding the occurrences of a specific word specified by the user input into the textfield.
  * 
+ * Updated For 6/30/2020
+ * Junit testing was added in a separate file for WordOccurences
+ * 
+ * 
  * Updated For 7/13/2020
  * Added a database to the word occurrence application. Instead of the words frequency being store and read to our HashMap it will be done using MySQL database.
  * The HashMap will only be use as a temporary place to store the words until it is passed to the database using query commands.
@@ -50,7 +54,7 @@ import org.jsoup.select.*;
  * Java doc was added to word occurrences application.
  */
 
-public class URL_GUI implements  ActionListener {
+public class WordOccurenceApp implements  ActionListener {
 	
 	private JPanel panel;
 	private JFrame frame;
@@ -61,7 +65,7 @@ public class URL_GUI implements  ActionListener {
 	/**
 	 * constructor that makes a new GUI
 	 */
-	public URL_GUI() {
+	public WordOccurenceApp() {
 		
 		panel = new JPanel();
 		frame = new JFrame();
@@ -98,7 +102,7 @@ public class URL_GUI implements  ActionListener {
 	 */
 	public static void main (String[] args) throws Exception{
 		
-		new URL_GUI();
+		new WordOccurenceApp();
 	}
 
 	/**
@@ -157,7 +161,7 @@ public class URL_GUI implements  ActionListener {
 			
 			
 		} catch (IOException e1) {
-			Logger.getLogger(URL_GUI.class.getName()).log(Level.SEVERE,null, e1);
+			Logger.getLogger(WordOccurenceApp.class.getName()).log(Level.SEVERE,null, e1);
 			e1.printStackTrace();
 		} catch (Exception e1) {
 			
