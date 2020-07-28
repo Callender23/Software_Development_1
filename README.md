@@ -5,7 +5,7 @@
   2. navagiate to location of jar file.
   3. Type in **java -jar<name_of_jar_file>.jar** to run jar file.
 
-## primeNumberApp
+## ClientSide/ServerSide
   client/server application that has client send a server request and compute if user input number is prime.
   The server responds with a yes or no responds while client displays the answer.
   Implementation of client/server will be added to WordOccurence application in the future.
