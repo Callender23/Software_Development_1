@@ -9,6 +9,11 @@
   client/server application that has client send a server request and compute if user input number is prime.
   The server responds with a yes or no responds while client displays the answer.
   Implementation of client/server will be added to WordOccurence application in the future.
+  
+ ## Running ClientSide/SeverSide jar files
+    To know how to run the two jar files simply follow the steps in Running jar file on Windows & Mac section.
+    Be sure to run the ServerSide jar file before attempting to run the ClientSide jar file.
+    ClientSide.jar and ServerSide.jar were both added to the this branch(master) along with their respective java files.
 
 ## Simple GUI added 
     A new simple GUI was added to new java file called WordOccurenceApp.java, it function the same as the
